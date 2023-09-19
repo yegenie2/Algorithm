@@ -1,13 +1,12 @@
-from queue import PriorityQueue
+from heapq import *
 
 n = int(input())
-card = PriorityQueue()
+card = []
 lst = []
 for _ in range(n):
-    card.put(int(input()))
-
+    heappush(card,int(input()))
 for i in range(n-1):
-    temp = card.get(card)+card.get(card)
-    card.put(temp)
+    temp = heappop(card)+heappop(card)
+    heappush(card,temp)
     lst.append(temp)
 print(sum(lst))
